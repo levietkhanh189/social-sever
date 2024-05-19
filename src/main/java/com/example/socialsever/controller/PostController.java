@@ -26,6 +26,11 @@ public class PostController {
         Optional<Post> post = postService.getPostById(id);
         return post.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/search")
+    public List<Post> searchPosts(@RequestParam String keyword) {
+        return postService.searchPosts(keyword);
+    }
 
     @PostMapping
     public Post createPost(@RequestBody Post post) {

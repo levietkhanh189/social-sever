@@ -31,6 +31,11 @@ public class PostService {
     }
 
     @Transactional
+    public List<Post> searchPosts(String keyword) {
+        return postRepository.findByCaptionContaining(keyword);
+    }
+
+    @Transactional
     public void deletePost(int id) {
         postRepository.deleteById(id);
     }

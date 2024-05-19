@@ -36,6 +36,11 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
+    public List<User> searchUsers(String keyword) {
+        return userRepository.findByUserNameContaining(keyword);
+    }
+
+    @Transactional(readOnly = true)
     public boolean checkEmailExists(String email) {
         return userRepository.findByEmail(email).isPresent();
     }

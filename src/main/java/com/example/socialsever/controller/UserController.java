@@ -47,6 +47,11 @@ public class UserController {
         }
     }
 
+    @GetMapping("/search")
+    public List<User> searchUsers(@RequestParam String keyword) {
+        return userService.searchUsers(keyword);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
